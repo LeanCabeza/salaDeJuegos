@@ -10,6 +10,9 @@ import { MainComponent } from './page/main/main.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { AboutMeComponent } from './page/about-me/about-me.component';
 import { RegisterComponent } from './page/register/register.component';
+import { PreguntadosComponent } from './page/preguntados/preguntados.component';
+import { MayormenorComponent } from './page/mayormenor/mayormenor.component';
+import { AhorcadoComponent } from './page/ahorcado/ahorcado.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { RegisterComponent } from './page/register/register.component';
     MainComponent,
     NotFoundComponent,
     AboutMeComponent,
-    RegisterComponent
+    RegisterComponent,
+    PreguntadosComponent,
+    MayormenorComponent,
+    AhorcadoComponent
   ],
   imports: [
     BrowserModule,

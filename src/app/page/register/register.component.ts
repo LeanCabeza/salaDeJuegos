@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  mensajeFirebase: string = 'Registrado correctamente';
+  mensajeLoggeo: string = '';
 
   constructor(private authService:AuthService,
     private snackbar: MatSnackBar,
@@ -32,18 +32,19 @@ export class RegisterComponent implements OnInit {
     const{email,password} = this.usuario;
 
     this.authService.register(email,password).then(res=>{
+      this.mensajeLoggeo = "Se registro Correctamente";
       this.openSnackBarRegister();
       setTimeout(() => {
         this.router.navigate(['/main']);
         }, 1500);
       }).catch(error=>{
-        this.mensajeFirebase = error.message;
+        this.mensajeLoggeo = error.message;
         this.openSnackBarRegister();
       });
   }
 
   openSnackBarRegister(): void{
-    this.snackbar.open(this.mensajeFirebase, 'Cerrar',{
+    this.snackbar.open(this.mensajeLoggeo, 'Cerrar',{
       duration:3000
     });
   }

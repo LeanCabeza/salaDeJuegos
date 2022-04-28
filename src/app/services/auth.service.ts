@@ -16,7 +16,7 @@ export class AuthService {
         return await this.auth.createUserWithEmailAndPassword(email,password);
     } catch (error) {
       console.log("Error al Registrar",error);
-      return error;
+      throw error;
     }
   }
 
@@ -25,7 +25,7 @@ export class AuthService {
           return await this.auth.signInWithEmailAndPassword(email,password);
       } catch (error) {
         console.log("Error al Loggear",error);
-        return error;
+        throw error;
       }
   }
 

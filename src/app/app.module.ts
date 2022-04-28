@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './page/login/login.component';
@@ -13,6 +12,12 @@ import { RegisterComponent } from './page/register/register.component';
 import { PreguntadosComponent } from './page/preguntados/preguntados.component';
 import { MayormenorComponent } from './page/mayormenor/mayormenor.component';
 import { AhorcadoComponent } from './page/ahorcado/ahorcado.component';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +35,11 @@ import { AhorcadoComponent } from './page/ahorcado/ahorcado.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

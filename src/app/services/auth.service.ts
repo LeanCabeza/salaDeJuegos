@@ -8,10 +8,10 @@ import firebase from 'firebase/compat';
 
 export class AuthService {
 
-  constructor(private auth: AngularFireAuth) { 
+  constructor(public auth: AngularFireAuth) { 
   }
 
-  async register(email:string, password:string){
+  async register(email: string, password:string){
     try {
         return await this.auth.createUserWithEmailAndPassword(email,password);
     } catch (error) {
@@ -24,10 +24,8 @@ export class AuthService {
       try {
           return await this.auth.signInWithEmailAndPassword(email,password);
       } catch (error) {
-        console.log("Error al Loggear",error);
         throw error;
       }
   }
-
 
 }

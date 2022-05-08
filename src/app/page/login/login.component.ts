@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgForm } from '@angular/forms';
+import { Usuario } from 'src/app/models/usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 
 
@@ -13,10 +17,12 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   mensajeLoggeo: string = '';
+  @ViewChild("loginForm") loginForm:NgForm | undefined;
 
   constructor(private authService:AuthService,
     private snackbar: MatSnackBar,
     private router: Router,
+    private usuariosServicio:UsuarioService
     ) {
 
      }
@@ -29,20 +35,28 @@ export class LoginComponent implements OnInit {
     password: ""
   }
 
-  Loggin(){
-    console.log(this.usuario);
-    const{email,password} = this.usuario;
+  Loggin({value, valid}: {value: Usuario, valid: any}){
 
-    this.authService.login(email,password).then(res=>{
-      this.mensajeLoggeo = "Loggeado Corectamente";
-      this.openSnackBarLogin();
-        setTimeout(() => {
-          this.router.navigate(['/main']);
-        }, 1500);
-      }).catch(error=>{
-        this.mensajeLoggeo = error.message;
+    if(!valid){
+        this.mensajeLoggeo = 'Por favor llena el formulario correctamente';
         this.openSnackBarLogin();
-      });
+    }
+    else{
+      const{email= "",password = ""} = this.usuario;
+      //Intento Loggear el Usuario
+      this.authService.login(email,password).then(res=>{
+        this.mensajeLoggeo = "Loggeado Corectamente";
+        this.openSnackBarLogin();
+          setTimeout(() => {
+            this.router.navigate(['/main']);
+          }, 1500);
+          //Updateo la fecha de ultimo login
+          this.usuariosServicio.actualizarFechaLoggeo(email);  
+        }).catch(error=>{
+          this.mensajeLoggeo = error.message;
+          this.openSnackBarLogin();
+        });
+    }
   }
 
   openSnackBarLogin(): void{

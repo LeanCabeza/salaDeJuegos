@@ -9,27 +9,103 @@
   
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrarse</p>
   
-                  <form class="mx-1 mx-md-4">
-  
+                  <form class="mx-1 mx-md-4" #usuarioForm="ngForm" (ngSubmit)="Register(usuarioForm)">
+                    <!-- EMAIL -->
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="email" id="form3Example3c" class="form-control" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}" />
+                        <input 
+                        type="email" 
+                        name="email" 
+                        class="form-control"
+                        #email="ngModel"
+                        [(ngModel)]="usuario.email"
+                        [ngClass]="{'is-invalid': email.errors && email.touched}"
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                        required>
+                        <div [hidden]="!email.errors?.['required']" class="invalid-feedback">
+                          Email requerido
+                        </div> 
+                        <div [hidden]="!email.errors?.['pattern']" class="invalid-feedback">
+                          Email no es válido
+                        </div>
                         <label class="form-label" for="form3Example3c">Email</label>
                       </div>
                     </div>
   
+                    <!-- PASSWORD -->
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="password" id="form3Example4c" class="form-control" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" />
+                        <input 
+                        type="password" 
+                        name="password" 
+                        class="form-control"
+                        #password="ngModel"
+                        [(ngModel)]="usuario.password"
+                        [ngClass]="{'is-invalid': password.errors && password.touched}"
+                        required
+                        minlength="2">
+                        <div [hidden]="!password.errors?.['password']" class="invalid-feedback">
+                          Password requerida
+                        </div> 
+                        <div [hidden]="!password.errors?.['minlength']" class="invalid-feedback">
+                          Debe contener al menos 2 caracteres
+                        </div>
                         <label class="form-label" for="form3Example4c">Password</label>
                       </div>
                     </div>
-  
+                    
+                    <!-- NOMBRE -->
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input 
+                        type="text" 
+                        name="nombre" 
+                        class="form-control"
+                        #nombre="ngModel"
+                        [(ngModel)]="usuario.nombre"
+                        [ngClass]="{'is-invalid': nombre.errors && nombre.touched}"
+                        required
+                        minlength="2">
+                        <div [hidden]="!nombre.errors?.['required']" class="invalid-feedback">
+                          Nombre requerido
+                        </div> 
+                        <div [hidden]="!nombre.errors?.['required']" class="invalid-feedback">
+                          Debe contener al menos 2 caracteres
+                        </div>
+                      <label class="form-label" for="form3Example4c">Nombre</label>
+                      </div>
+                    </div>
+                    
+                    <!-- APELLIDO -->
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input 
+                          type="text" 
+                          name="apellido" 
+                          class="form-control"
+                          #apellido="ngModel"
+                          [(ngModel)]="usuario.apellido"
+                          [ngClass]="{'is-invalid': apellido.errors && apellido.touched}"
+                          required
+                          minlength="2">
+                          <div [hidden]="!apellido.errors?.['required']" class="invalid-feedback">
+                            Apellido requerido
+                          </div> 
+                          <div [hidden]="!apellido.errors?.['required']" class="invalid-feedback">
+                            Debe contener al menos 2 caracteres
+                          </div>
+                        <label class="form-label" for="form3Example4c">Apellido</label>
+                      </div>
+                    </div>
   
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="button" class="btn btn-primary btn-lg" (click)="Register()">Register</button>
+                      <button type="submit" class="btn btn-primary btn-lg" >Register</button>
                     </div>
   
                   </form>

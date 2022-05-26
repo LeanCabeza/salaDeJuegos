@@ -44,7 +44,4 @@ export class UsuarioService {
     this.usuarioDoc.update({fechaUltimoLogin});
   }
 
-
-
-
 }

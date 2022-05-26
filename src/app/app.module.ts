@@ -17,6 +17,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChatComponent } from './page/chat/chat.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RegisterComponent,
     PreguntadosComponent,
     MayormenorComponent,
-    AhorcadoComponent
+    AhorcadoComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

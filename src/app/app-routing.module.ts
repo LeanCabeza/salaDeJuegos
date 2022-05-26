@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutMeComponent } from './page/about-me/about-me.component';
 import { AhorcadoComponent } from './page/ahorcado/ahorcado.component';
+import { ChatComponent } from './page/chat/chat.component';
 import { LoginComponent } from './page/login/login.component';
 import { MainComponent } from './page/main/main.component';
 import { MayormenorComponent } from './page/mayormenor/mayormenor.component';
@@ -11,6 +12,7 @@ import { RegisterComponent } from './page/register/register.component';
 
 const routes: Routes = [
   {path:'',component: MainComponent},
+  {path:'chat',component: ChatComponent},
   {path:'main',component: MainComponent},
   {path:'login',component: LoginComponent},
   {path:'register',component: RegisterComponent},

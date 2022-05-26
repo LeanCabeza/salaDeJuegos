@@ -1,0 +1,38 @@
+<div class="container main-container">
+    <h1>Sala de Chat</h1>
+    <hr>
+    <div class="container">
+        <div class="chat-window">
+            <div class="app-mensajes" id="chat-mensajes">
+
+                <div *ngFor="let chat of chat_service.chats"
+                    [ngClass]="{'text-end': chat_service.usuario.uid == chat.uid,
+                                'text-start': chat_service.usuario.uid != chat.uid}">
+                    <span 
+                    [ngClass]="{'badge alert-success': chat_service.usuario.uid == chat.uid,
+                                'badge alert-danger': chat_service.usuario.uid != chat.uid}" >
+                            <strong>{{chat.nombre}} </strong>
+ 
+                    </span>
+                    <br>
+                    <i>{{chat.fecha}}</i>
+                    <p class="h6" 
+                                style="border: 1px solid black;
+                                border-radius: 8px;
+                                background-color: #f2f2f2;
+                                padding: 5px;">
+                        {{chat.mensaje}}</p>
+                </div>
+                        
+            </div>
+            <input  
+                type="text" 
+                name="chat" 
+                id="input-mensaje"
+                class="form-control" 
+                placeholder="Enviar Mensaje..."
+                [(ngModel)]="mensaje" 
+                (keyup.enter)="enviarMensaje()">
+        </div>
+    </div>
+</div>

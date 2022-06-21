@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  logged = false;
 
-  constructor() { }
+  constructor( private  authService: AuthService,private snackbar: MatSnackBar,) {
+   }
 
   ngOnInit(): void {
+    this.obtenerUsuarioLoggeado();
+  }
+
+  obtenerUsuarioLoggeado(){
+    this.authService.getUserLogged().subscribe(user => {
+      console.log(user?.email);
+      if (user?.email != null) {this.logged = true;} else this.logged = false
+    })
+  }
+
+  logout(){
+    this.authService.logout();
+    this.logged = false;
+    this.snackbar.open("Saliendo...", 'Cerrar',{
+      duration:3000
+    });
   }
 
 }

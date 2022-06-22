@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   logged = false;
+  emailUsuario = "";
 
   constructor( private  authService: AuthService,private snackbar: MatSnackBar,) {
    }
@@ -20,7 +21,10 @@ export class HeaderComponent implements OnInit {
   obtenerUsuarioLoggeado(){
     this.authService.getUserLogged().subscribe(user => {
       console.log(user?.email);
-      if (user?.email != null) {this.logged = true;} else this.logged = false
+      if (user?.email != null) {
+        this.logged = true; 
+        this.emailUsuario = user.email 
+      } else this.logged = false;
     })
   }
 

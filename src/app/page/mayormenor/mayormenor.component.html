@@ -1,12 +1,24 @@
-<div class="container">
-    <h1>Mayor menor</h1>
-    <div class="row">
-        <div class="col">
-            <h2>x</h2>
-        </div>
-        <div class="col">
-            <h2>y</h2>
-        </div>
+<div class="containerGame" *ngIf="!gameOver">
+    <h1 class="title">Adivina si la siguiente es mayor o menor!</h1>
+    <h2 class="score">Puntuacion 🚀: {{ score }}</h2>
+  
+    <div class="card-container">
+      <img class="card-image" [src]="currentCard?.imageUrl" alt="Current Card">
     </div>
-
-</div>
+  
+    <div class="button-container">
+      <button class="game-button" (click)="checkGuess(true)">Mayor ➕</button>
+      <button class="game-button" (click)="checkGuess(false)">Menor ➖</button>
+    </div>
+  </div>
+  
+  <div class="containerFail" *ngIf="gameOver">
+    <h1 class="title">Juego terminado ☠💀⚰</h1>
+    <h2 class="score">Puntuación final ❌: {{ score }}</h2>
+    <h3 class="next-card-title">La siguiente carta era:</h3>
+    <div class="card-container">
+      <img *ngIf="nextCardVisible" class="card-image" [src]="nextCard?.imageUrl" alt="Next Card">
+    </div>
+    <a (click)="restartGame()" class="playAgainButton">Juegar de nuevo? 🔁</a>
+  </div>
+  

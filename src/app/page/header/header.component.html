@@ -42,7 +42,7 @@
     <ng-template #loggedHeader>
       <div class="container">
         <div class="text-end">
-          <i style="color: yellow;">{{emailUsuario}}</i>
+          <strong style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 15px;">Usuario: {{emailUsuario}} !!</strong>
         </div>
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
@@ -74,7 +74,7 @@
               </a>
             </li>
             <li>
-              <a routerLink="/404" class="nav-link text-white">
+              <a routerLink="" class="nav-link text-white">
                 <i class="fa-solid fa-circle-xmark"></i>
                 <strong (click)="logout()"> Salir</strong>     
               </a>

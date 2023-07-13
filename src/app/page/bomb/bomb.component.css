@@ -1,0 +1,124 @@
+.container {
+  border: 2px solid;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  margin: 50px auto;
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  
+}
+
+.time-display {
+  text-shadow: 0 0 2px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  border-radius: 85px;
+  color: #fff;
+  font-size: 50px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+.time-text {
+  margin: 0;
+}
+
+.containerFail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.title {
+  color: salmon;
+  font-size: 24px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.score {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.playAgainButton {
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+  .time-text {
+    margin: 0;
+  }
+  
+  .game-over {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  button, .time-display {
+    transition: background-color 0.3s;
+  }
+  
+  .playAgainButton {
+    box-shadow:inset 0px 1px 0px 0px #bee2f9;
+    background:linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+    background-color:#63b8ee;
+    border-radius:6px;
+    border:1px solid #3866a3;
+    display:inline-block;
+    cursor:pointer;
+    color:#14396a;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #7cacde;
+  }
+  .playAgainButton:hover {
+    background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
+    background-color:#468ccf;
+  }
+  .playAgainButton:active {
+    position:relative;
+    top:1px;
+  }
+  
+  .desactivarBtn {
+    box-shadow: 0px 10px 14px -7px #3e7327;
+    background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+    background-color:#77b55a;
+    border-radius:4px;
+    border:1px solid #4b8f29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:16px;
+    font-weight:bold;
+    padding:6px 12px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5b8a3c;
+  }
+  .desactivarBtn:hover {
+    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+    background-color:#72b352;
+  }
+  .desactivarBtn:active {
+    position:relative;
+    top:1px;
+  }

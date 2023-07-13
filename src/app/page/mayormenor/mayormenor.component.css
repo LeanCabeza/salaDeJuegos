@@ -5,7 +5,7 @@
     justify-content: center;
     height: 500px;
     border: 2px solid ;
-    border-radius: 5%;
+    border-radius: 35px;
     margin: 25px;
     background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
   }
@@ -17,7 +17,7 @@
     justify-content: center;
     height: 80vh;
     border: 2px solid ;
-    border-radius: 5%;
+    border-radius: 35px;
     margin: 25px;
     background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
   }

@@ -9,6 +9,8 @@ import { MayormenorComponent } from './page/mayormenor/mayormenor.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { PreguntadosComponent } from './page/preguntados/preguntados.component';
 import { RegisterComponent } from './page/register/register.component';
+import { BombComponent } from './page/bomb/bomb.component';
+import { ListgamesComponent } from './page/listgames/listgames.component';
 
 const routes: Routes = [
   {path:'',component: MainComponent},
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path:'ahorcado',component: AhorcadoComponent},
   {path:'mayormenor',component: MayormenorComponent},
   {path:'preguntados',component: PreguntadosComponent},
+  {path:'bomb',component: BombComponent},
+  {path:'gamelist',component: ListgamesComponent},
   {path:'**',component: NotFoundComponent},
 ];
 

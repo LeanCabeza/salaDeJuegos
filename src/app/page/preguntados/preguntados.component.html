@@ -1,1 +1,21 @@
-<p>preguntados works!</p>
+<div class="game-container" *ngIf="!gameOver">
+  <h2><u>Pregunta {{ currentQuestionIndex + 1 }}</u>❓</h2>
+  <p>{{ currentQuestion.text }}</p>
+
+  <ul style="list-style-type: none;">
+    <li *ngFor="let option of currentQuestion.options; let i = index">
+      <button class="option-button" (click)="answerSelected(i)">{{ option }}</button>
+    </li>
+  </ul>
+
+  <p class="score">Puntaje🚀: {{ score }}</p>
+</div>
+
+<div class="game-over" *ngIf="gameOver">
+    <div class="containerFail">
+      <h2 style="font-size: 55px;font-family: Arial, Helvetica, sans-serif;"><strong>¡Perdiste ☠❌ !</strong></h2>
+      <p style="font-size: 25px;font-family: Arial, Helvetica, sans-serif;margin-top: 40px;">La opción correcta era: {{ questions[currentQuestionIndex].options[currentQuestion.correctOption] }}</p>
+      <p class="score">Puntaje🚀: {{ score }}</p>
+      <a style="margin-top: 40px;" (click)="restartGame()" class="playAgainButton">Juegar de nuevo? 🔁</a>
+    </div>
+</div>

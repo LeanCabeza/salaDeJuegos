@@ -18,7 +18,9 @@ import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChatComponent } from './page/chat/chat.component';
-
+import { CommonModule } from '@angular/common';
+import { BombComponent } from './page/bomb/bomb.component';
+import { ListgamesComponent } from './page/listgames/listgames.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { ChatComponent } from './page/chat/chat.component';
     PreguntadosComponent,
     MayormenorComponent,
     AhorcadoComponent,
-    ChatComponent
+    ChatComponent,
+    BombComponent,
+    ListgamesComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { ChatComponent } from './page/chat/chat.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

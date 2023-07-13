@@ -12,26 +12,22 @@
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0">
             <li>
               <a routerLink="" class="nav-link text-white">
-                  <i class="fa-solid fa-house"></i>
-                  <strong> Inicio</strong>        
+                  <strong> 🏠 Inicio</strong>        
               </a>
             </li>
             <li>
               <a routerLink="/about" class="nav-link text-white">
-                <i class="fa-solid fa-address-card"></i>
-                <strong> About</strong>     
+                <strong> 👨🏻‍💻 About</strong>     
               </a>
             </li>
             <li>
               <a routerLink="/register" class="nav-link text-white">
-                <i class="fa-solid fa-address-card"></i>
-                <strong> Register</strong>     
+                <strong> 📝 Register</strong>     
               </a>
             </li>
             <li>
               <a routerLink="/login" class="nav-link text-white">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                <strong> Login</strong>     
+                <strong> 📤 Login</strong>     
               </a>
             </li>
           </ul>
@@ -42,7 +38,7 @@
     <ng-template #loggedHeader>
       <div class="container">
         <div class="text-end">
-          <strong style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 15px;">Usuario: {{emailUsuario}} !!</strong>
+          <strong style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 15px;">🟢 {{emailUsuario}}</strong>
         </div>
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
@@ -51,32 +47,27 @@
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0">
             <li>
               <a routerLink="" class="nav-link text-white">
-                  <i class="fa-solid fa-house"></i>
-                  <strong> Inicio</strong>        
+                  <strong> 🏠 Inicio</strong>        
               </a>
             </li>
             <li>
-              <a routerLink="/ahorcado" class="nav-link text-white">
-                <i class="fa-solid fa-gamepad"></i>
-                <strong> Juegos</strong>     
+              <a routerLink="/gamelist" class="nav-link text-white">
+                <strong>  🎮 Juegos</strong>     
               </a>
             </li>
             <li>
               <a routerLink="/chat" class="nav-link text-white">
-                <i class="fa-brands fa-rocketchat"></i>
-                <strong> Chat</strong>     
+                <strong> 🦜 Chat</strong>     
               </a>
             </li>
             <li>
               <a routerLink="/about" class="nav-link text-white">
-                <i class="fa-solid fa-address-card"></i>
-                <strong> About</strong>     
+                <strong> 👨🏻‍💻 About</strong>     
               </a>
             </li>
             <li>
               <a routerLink="" class="nav-link text-white">
-                <i class="fa-solid fa-circle-xmark"></i>
-                <strong (click)="logout()"> Salir</strong>     
+                <strong (click)="logout()"> 🚫 Salir</strong>     
               </a>
             </li>
           </ul>

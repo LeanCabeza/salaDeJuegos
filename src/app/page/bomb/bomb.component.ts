@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { PuntajeServiceService } from 'src/app/services/puntaje-service.service';
+
 
 @Component({
   selector: 'app-bomb',
@@ -6,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bomb.component.css']
 })
 export class BombComponent implements  OnInit {
+  actualMail: string;
   time: number = 0;
   cutOffTime: number = 0;
   counter: number = 0;
@@ -13,7 +17,10 @@ export class BombComponent implements  OnInit {
   finalScore: number = 0; // Variable para almacenar el puntaje final
   timerInterval: any;
 
+  constructor (private puntajeService: PuntajeServiceService,private authService: AuthService){}
+
   ngOnInit() {
+    this.actualMail = this.authService.actualUserMail;
     this.startTimer();
     this.setCutOffTime();
   }
@@ -46,6 +53,8 @@ export class BombComponent implements  OnInit {
   }
 
   restartGame() {
+    //Antes de reiniciar guardo todo en bdd
+    this.puntajeService.guardarPuntaje(this.actualMail,this.finalScore.toString(),"CronoBomb");
     this.time = 0;
     this.counter = 0;
     this.gameOver = false;
@@ -75,4 +84,5 @@ export class BombComponent implements  OnInit {
   padTime(time: number, length: number = 2): string {
     return time.toString().padStart(length, '0');
   }
+  
 }

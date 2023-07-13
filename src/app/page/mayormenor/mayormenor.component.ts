@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { PuntajeServiceService } from 'src/app/services/puntaje-service.service';
 
 interface Card {
   value: number;
@@ -12,9 +14,9 @@ interface Card {
   styleUrls: ['./mayormenor.component.css']
 })
 export class MayormenorComponent implements OnInit {
+  constructor(private puntajeService: PuntajeServiceService, private authService: AuthService) {}
 
-  constructor() { }
-
+  actualMail: string;
 
   cards: Card[] = [
     { value: 0, imageUrl: 'assets/images/cards/0.png' },
@@ -30,12 +32,13 @@ export class MayormenorComponent implements OnInit {
   ];
 
   nextCardVisible: boolean = false;
-  currentCard: Card = {value: 0, imageUrl: 'assets/images/cards/0.png'};
-  nextCard: Card = {value: 0, imageUrl: 'assets/images/cards/0.png'};;
+  currentCard: Card = { value: 0, imageUrl: 'assets/images/cards/0.png' };
+  nextCard: Card = { value: 0, imageUrl: 'assets/images/cards/0.png' };
   score: number = 0;
   gameOver: boolean = false;
 
   ngOnInit() {
+    this.actualMail = this.authService.actualUserMail;
     this.shuffleCards();
     this.showNextCard();
   }
@@ -67,9 +70,10 @@ export class MayormenorComponent implements OnInit {
   }
 
   restartGame() {
-    window.location.reload();
+    this.puntajeService.guardarPuntaje(this.actualMail, this.score.toString(), "MayorMenor");
+    this.score = 0;
+    this.gameOver = false;
+    this.shuffleCards();
+    this.showNextCard();
   }
-
 }
-
-

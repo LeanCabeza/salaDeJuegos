@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { PuntajeServiceService } from 'src/app/services/puntaje-service.service';
 
 interface Question {
   text: string;
@@ -12,7 +14,8 @@ interface Question {
   styleUrls: ['./preguntados.component.css']
 })
 export class PreguntadosComponent implements OnInit {
-
+  
+  actualMail: string;
   score: number = 0;
   gameOver: boolean = false;
   currentQuestionIndex: number = 0;
@@ -99,6 +102,8 @@ export class PreguntadosComponent implements OnInit {
     },
   ];
 
+  constructor(private puntajeService: PuntajeServiceService,private authService: AuthService){}
+
   currentQuestion: Question = {
     text: '¿En qué año se fundó Google?',
     options: ['1998', '2001', '1996', '2004'],
@@ -106,6 +111,7 @@ export class PreguntadosComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.actualMail = this.authService.actualUserMail;
     this.shuffleQuestions();
     this.showNextQuestion();
   }
@@ -136,6 +142,7 @@ export class PreguntadosComponent implements OnInit {
   }
 
   endGame(): void {
+    this.puntajeService.guardarPuntaje(this.actualMail,this.score.toString(),"Preguntados");
     this.gameOver = true;
   }
 

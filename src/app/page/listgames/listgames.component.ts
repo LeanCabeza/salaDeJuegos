@@ -17,7 +17,6 @@ export class ListgamesComponent implements OnInit {
 
   obtenerUsuarioLoggeado(){
     this.authService.getUserLogged().subscribe(user => {
-      console.log(user?.email);
       if (user?.email != null) {
         this.logged = true; 
       } else this.logged = false;

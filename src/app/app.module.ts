@@ -21,6 +21,7 @@ import { ChatComponent } from './page/chat/chat.component';
 import { CommonModule } from '@angular/common';
 import { BombComponent } from './page/bomb/bomb.component';
 import { ListgamesComponent } from './page/listgames/listgames.component';
+import { TablaComponent } from './page/tabla/tabla.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ListgamesComponent } from './page/listgames/listgames.component';
     AhorcadoComponent,
     ChatComponent,
     BombComponent,
-    ListgamesComponent
+    ListgamesComponent,
+    TablaComponent
   ],
   imports: [
     BrowserModule,

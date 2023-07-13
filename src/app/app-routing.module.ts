@@ -11,6 +11,7 @@ import { PreguntadosComponent } from './page/preguntados/preguntados.component';
 import { RegisterComponent } from './page/register/register.component';
 import { BombComponent } from './page/bomb/bomb.component';
 import { ListgamesComponent } from './page/listgames/listgames.component';
+import { TablaComponent } from './page/tabla/tabla.component';
 
 const routes: Routes = [
   {path:'',component: MainComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'preguntados',component: PreguntadosComponent},
   {path:'bomb',component: BombComponent},
   {path:'gamelist',component: ListgamesComponent},
+  {path:'tabla',component: TablaComponent},
   {path:'**',component: NotFoundComponent},
 ];
 

@@ -142,7 +142,7 @@ export class PreguntadosComponent implements OnInit {
   }
 
   endGame(): void {
-    this.puntajeService.guardarPuntaje(this.actualMail,this.score.toString(),"Preguntados");
+    this.puntajeService.guardarPuntaje(this.actualMail,this.score,"Preguntados");
     this.gameOver = true;
   }
 

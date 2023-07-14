@@ -54,7 +54,7 @@ export class BombComponent implements  OnInit {
 
   restartGame() {
     //Antes de reiniciar guardo todo en bdd
-    this.puntajeService.guardarPuntaje(this.actualMail,this.finalScore.toString(),"CronoBomb");
+    this.puntajeService.guardarPuntaje(this.actualMail,this.finalScore,"CronoBomb");
     this.time = 0;
     this.counter = 0;
     this.gameOver = false;

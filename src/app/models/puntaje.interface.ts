@@ -1,6 +1,6 @@
 export interface Puntaje {
     jugador:string;
-    puntaje?:string;
+    puntaje?:number;
     juego?:string;
     fecha?:string;
     uid?:string;

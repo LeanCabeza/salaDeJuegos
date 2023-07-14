@@ -1,3 +1,23 @@
-<p>
-  tabla works!
-</p>
+
+<div class="m-5">
+  <div class="container" style="border: 1px solid black; border-radius: 35px;">
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th>Jugador</th>
+          <th>Puntaje</th>
+          <th>Juego</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let puntaje of puntajes">
+          <td>{{ puntaje.jugador }}</td>
+          <td>{{ puntaje.puntaje }}</td>
+          <td>{{ puntaje.juego }}</td>
+          <td>{{ puntaje.fecha }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

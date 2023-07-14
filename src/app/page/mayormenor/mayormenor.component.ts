@@ -70,7 +70,7 @@ export class MayormenorComponent implements OnInit {
   }
 
   restartGame() {
-    this.puntajeService.guardarPuntaje(this.actualMail, this.score.toString(), "MayorMenor");
+    this.puntajeService.guardarPuntaje(this.actualMail, this.score, "MayorMenor");
     this.score = 0;
     this.gameOver = false;
     this.shuffleCards();

@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Question } from 'src/app/models/question.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { PuntajeServiceService } from 'src/app/services/puntaje-service.service';
-
-interface Question {
-  text: string;
-  options: string[];
-  correctOption: number;
-}
 
 @Component({
   selector: 'app-preguntados',
@@ -19,7 +14,7 @@ export class PreguntadosComponent implements OnInit {
   score: number = 0;
   gameOver: boolean = false;
   currentQuestionIndex: number = 0;
-  questions: Question[] = [
+  questions:   Question[] = [
     {
       text: '¿Cuál es la capital de Francia?',
       options: ['Londres', 'París', 'Madrid', 'Berlín'],
@@ -104,11 +99,7 @@ export class PreguntadosComponent implements OnInit {
 
   constructor(private puntajeService: PuntajeServiceService,private authService: AuthService){}
 
-  currentQuestion: Question = {
-    text: '¿En qué año se fundó Google?',
-    options: ['1998', '2001', '1996', '2004'],
-    correctOption: 0
-  };
+  currentQuestion: Question;
 
   ngOnInit(): void {
     this.actualMail = this.authService.actualUserMail;

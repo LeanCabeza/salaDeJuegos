@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Card } from 'src/app/models/card.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { PuntajeServiceService } from 'src/app/services/puntaje-service.service';
-
-interface Card {
-  value: number;
-  imageUrl: string;
-}
 
 @Component({
   selector: 'app-mayormenor',

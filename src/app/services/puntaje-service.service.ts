@@ -27,17 +27,9 @@ export class PuntajeServiceService {
   }
 
   obtenerPuntajes() {
-    this.puntajeCollection = this.afs.collection<Puntaje>('puntajes', ref => ref.orderBy('puntaje', 'asc').limit(20));
+    this.puntajeCollection = this.afs.collection<Puntaje>('puntajes', ref => ref.orderBy("puntaje", "desc").limit(10));
   
-    return this.puntajeCollection.valueChanges().pipe(
-      map((puntajes: Puntaje[]) => {
-        this.puntajes = [];
-        for (let i of puntajes) {
-          this.puntajes.unshift(i);
-        }
-        return this.puntajes; // Agrega esta línea para devolver los puntajes
-      })
-    );
+    return this.puntajeCollection.valueChanges();
   }
 
 }

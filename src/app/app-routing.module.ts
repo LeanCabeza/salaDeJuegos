@@ -13,7 +13,7 @@ import { BombComponent } from './page/bomb/bomb.component';
 import { ListgamesComponent } from './page/listgames/listgames.component';
 import { TablaComponent } from './page/tabla/tabla.component';
 
-const routes: Routes = [
+/*const routes: Routes = [
   {path:'',component: MainComponent},
   {path:'chat',component: ChatComponent},
   {path:'main',component: MainComponent},
@@ -27,6 +27,19 @@ const routes: Routes = [
   {path:'gamelist',component: ListgamesComponent},
   {path:'tabla',component: TablaComponent},
   {path:'**',component: NotFoundComponent},
+];*/
+
+const routes: Routes = [
+  {path:'',component: MainComponent},
+  {
+    path: 'on',
+    loadChildren: () => import('./modules/logged-in/logged-in-routing.module').then(m => m.LoggedInRoutingModule),
+  },
+  {
+    path: 'off',
+    loadChildren: () => import('./modules/logged-out/logged-out-routing.module').then(m => m.LoggedOutRoutingModule),
+  },
+  {path:'**',component: NotFoundComponent}
 ];
 
 @NgModule({

@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         this.mensajeLoggeo = "Loggeado Corectamente";
         this.openSnackBarLogin();
           setTimeout(() => {
-            this.router.navigate(['/main']);
+            this.router.navigate(['/off/main']);
           }, 1500);
           //Updateo la fecha de ultimo login
           this.usuariosServicio.actualizarFechaLoggeo(email);  

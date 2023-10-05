@@ -71,7 +71,7 @@ export class RegisterComponent implements OnInit {
           value.fechaIngreso = this.myDate.toLocaleDateString() + " " + this.myDate.toLocaleTimeString();
           value.fechaUltimoLogin = this.myDate.toLocaleDateString() + " " + this.myDate.toLocaleTimeString();
           this.usuariosServicio.agregarUsuario(value);
-          this.router.navigate(['/main']);
+          this.router.navigate(['/off/main']);
           }, 1500);
       }).catch(error=>{
         // Si algo sale mal muestro el error.

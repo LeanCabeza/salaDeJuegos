@@ -12,9 +12,13 @@
 
         <div class="col" *ngIf="!win && !lose">
             <div class="col text-center m-5">
-                <button (click)="validarLetra(letra) 
-                    "*ngFor="let letra of letras " class="btn btn-success m-1">
-                    {{ letra }}
+                <button
+                (click)="validarLetra(letra)"
+                *ngFor="let letra of letras"
+                class="btn m-1"
+                [ngClass]="{ 'btn-success': !letrasBloqueadas.includes(letra), 'btn-secondary': letrasBloqueadas.includes(letra) }"
+                >
+                {{ letra }}
                 </button>
             </div>
             <div class="col text-center mt-4">

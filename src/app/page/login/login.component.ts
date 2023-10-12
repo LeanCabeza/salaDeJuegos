@@ -35,6 +35,19 @@ export class LoginComponent implements OnInit {
     password: ""
   }
 
+  selectUser(userId: number) {
+    if (userId === 1) {
+      this.usuario.email = 'usuario1@example.com';
+      this.usuario.password = 'password1';
+    } else if (userId === 2) {
+      this.usuario.email = 'usuario2@example.com';
+      this.usuario.password = 'password2';
+    } else if (userId === 3) {
+      this.usuario.email = 'usuario3@example.com';
+      this.usuario.password = 'password3';
+    }
+  }
+
   Loggin({value, valid}: {value: Usuario, valid: any}){
 
     if(!valid){

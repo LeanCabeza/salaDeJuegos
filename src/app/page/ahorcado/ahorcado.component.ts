@@ -14,8 +14,9 @@ export class AhorcadoComponent implements OnInit {
   intentos = 0;
   win = false;
   lose = false;
-  palabras: Array<String> = ['COMPUTADORA','LAVADORA','HELADERA','TIGRE','LEOPARDO','LICUADORA','SILLA','PARLANTES','PLANCHA','ASPIRADORA','CELULAR','TELEFONO','CALCULADORA','MOUSE','AUTOMOVIL','AURICULARES','TELESCOPIO','TESLA','PROMOCION','OFERTA'];
-  letras: Array<String> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+  letrasBloqueadas: string[] = [];
+  palabras: Array<string> = ['COMPUTADORA','LAVADORA','HELADERA','TIGRE','LEOPARDO','LICUADORA','SILLA','PARLANTES','PLANCHA','ASPIRADORA','CELULAR','TELEFONO','CALCULADORA','MOUSE','AUTOMOVIL','AURICULARES','TELESCOPIO','TESLA','PROMOCION','OFERTA'];
+  letras: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
   'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
   'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   palabra = this.palabras[Math.floor(Math.random() * this.palabras.length)].toUpperCase();
@@ -25,6 +26,9 @@ export class AhorcadoComponent implements OnInit {
   }
 
   validarLetra( letra: any ){
+    if (!this.letrasBloqueadas.includes(letra)) {
+      this.letrasBloqueadas.push(letra);
+      this.existeLetra(letra);
     this.existeLetra(letra);
     let palabraOcultaArr = this.palabraOculta.split(' ');
       for (let i = 0; i<this.palabra.length; i++){
@@ -33,6 +37,7 @@ export class AhorcadoComponent implements OnInit {
       }
     this.palabraOculta = palabraOcultaArr.join(' ');
     this.verificarVictoria();
+    }
   }
   
   verificarVictoria(){

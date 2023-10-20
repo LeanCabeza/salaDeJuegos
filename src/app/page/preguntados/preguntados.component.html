@@ -2,6 +2,8 @@
   <h2><u>Pregunta {{ currentQuestionIndex + 1 }}</u>❓</h2>
   <p>{{ currentQuestion.text }}</p>
 
+  <img *ngIf="currentQuestionFlagUrl" [src]="currentQuestionFlagUrl" alt="Bandera">
+
   <ul style="list-style-type: none;">
     <li *ngFor="let option of currentQuestion.options; let i = index">
       <button class="option-button" (click)="answerSelected(i)">{{ option }}</button>
@@ -10,7 +12,6 @@
 
   <p class="score">Puntaje🚀: {{ score }}</p>
 </div>
-
 <div class="game-over" *ngIf="gameOver">
     <div class="containerFail">
       <h2 style="font-size: 55px;font-family: Arial, Helvetica, sans-serif;"><strong>¡Perdiste ☠❌ !</strong></h2>

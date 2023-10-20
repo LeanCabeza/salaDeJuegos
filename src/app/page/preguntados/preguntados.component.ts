@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/app/models/question.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { PuntajeServiceService } from 'src/app/services/puntaje-service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-preguntados',
@@ -14,90 +15,32 @@ export class PreguntadosComponent implements OnInit {
   score: number = 0;
   gameOver: boolean = false;
   currentQuestionIndex: number = 0;
+  currentQuestionFlagUrl: string | undefined;
+
   questions:   Question[] = [
     {
-      text: '¿Cuál es la capital de Francia?',
-      options: ['Londres', 'París', 'Madrid', 'Berlín'],
-      correctOption: 1
-    },
-    {
-      text: '¿En qué año se fundó Google?',
-      options: ['1998', '2001', '1996', '2004'],
-      correctOption: 0
-    },
-    {
-      text: '¿Cuál es el río más largo del mundo?',
-      options: ['Amazonas', 'Nilo', 'Yangtsé', 'Misisipi'],
-      correctOption: 0
-    },
-    {
-      text: '¿Quién pintó La Mona Lisa?',
-      options: ['Pablo Picasso', 'Vincent van Gogh', 'Leonardo da Vinci', 'Frida Kahlo'],
-      correctOption: 2
-    },
-    {
-      text: '¿Cuál es el planeta más grande del sistema solar?',
-      options: ['Tierra', 'Marte', 'Júpiter', 'Saturno'],
-      correctOption: 2
-    },
-    {
-      text: '¿En qué continente se encuentra Egipto?',
-      options: ['África', 'Asia', 'Europa', 'Oceanía'],
-      correctOption: 0
-    },
-    {
-      text: '¿Cuál es el océano más grande del mundo?',
-      options: ['Atlántico', 'Pacífico', 'Índico', 'Ártico'],
-      correctOption: 1
-    },
-    {
-      text: '¿Cuál es la moneda oficial de Japón?',
-      options: ['Yen', 'Euro', 'Dólar', 'Libra'],
-      correctOption: 0
-    },
-    {
-      text: '¿Cuál es el metal más abundante en la corteza terrestre?',
-      options: ['Hierro', 'Aluminio', 'Oro', 'Plata'],
-      correctOption: 1
-    },
-    {
-      text: '¿Quién escribió la novela "Cien años de soledad"?',
-      options: ['Gabriel García Márquez', 'Mario Vargas Llosa', 'Jorge Luis Borges', 'Isabel Allende'],
-      correctOption: 0
-    },
-    {
-      text: '¿Cuál es el país más poblado del mundo?',
-      options: ['China', 'India', 'Estados Unidos', 'Rusia'],
-      correctOption: 0
-    },
-    {
-      text: '¿Quién fue el primer presidente de Estados Unidos?',
-      options: ['George Washington', 'Thomas Jefferson', 'Abraham Lincoln', 'John F. Kennedy'],
-      correctOption: 0
-    },
-    {
-      text: '¿Cuál es el metal líquido a temperatura ambiente?',
-      options: ['Hierro', 'Plomo', 'Mercurio', 'Cobre'],
-      correctOption: 2
-    },
-    {
-      text: '¿En qué país se encuentra la Gran Muralla China?',
-      options: ['China', 'Japón', 'Corea del Sur', 'India'],
-      correctOption: 0
-    },
-    {
-      text: '¿Cuál es el idioma más hablado del mundo?',
-      options: ['Inglés', 'Español', 'Chino mandarín', 'Hindi'],
-      correctOption: 2
+      text: '¿Cuál es la capital de Argentina?',
+      options: ['Ciudad Autónoma de Buenos Aires', 'Quilmes', 'Merlo', 'Berazategui'],
+      correctOption: 1,
+      data: "https://restcountries.com/v3.1/name/ARGENTINA"
     },
     {
       text: '¿Cuál es la capital de Australia?',
       options: ['Sídney', 'Melbourne', 'Brisbane', 'Canberra'],
-      correctOption: 3
+      correctOption: 3,
+      data: "https://restcountries.com/v3.1/name/AUSTRALIA"
+    },
+    {
+      text: '¿Cuál es la capital de Brasil?',
+      options: ['Sídney', 'Melbourne', 'Brasília', 'Canberra'],
+      correctOption: 3,
+      data: "https://restcountries.com/v3.1/name/Brazil"
     },
   ];
 
-  constructor(private puntajeService: PuntajeServiceService,private authService: AuthService){}
+  constructor(private puntajeService: PuntajeServiceService,
+    private authService: AuthService,
+    private http: HttpClient) {}
 
   currentQuestion: Question;
 
@@ -117,6 +60,7 @@ export class PreguntadosComponent implements OnInit {
   showNextQuestion(): void {
     if (this.currentQuestionIndex < this.questions.length) {
       this.currentQuestion = this.questions[this.currentQuestionIndex];
+      this.obtainImage(); // Llama a obtainImage() para obtener la imagen junto con la pregunta
     } else {
       this.endGame();
     }
@@ -144,4 +88,19 @@ export class PreguntadosComponent implements OnInit {
     this.shuffleQuestions();
     this.showNextQuestion();
   }
+
+  obtainImage(): void {
+    const apiUrl = this.currentQuestion.data;
+  
+    this.http.get(apiUrl)
+      .subscribe((response: any) => {
+          this.currentQuestionFlagUrl = response[0].flags.png; // Asigna la URL de la bandera
+          console.log('URL de la imagen:', this.currentQuestionFlagUrl);
+      },
+      error => {
+        console.error('Error al obtener la imagen:', error);
+      });
+  }
+
+
 }

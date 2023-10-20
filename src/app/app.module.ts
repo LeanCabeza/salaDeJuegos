@@ -22,6 +22,8 @@ import { CommonModule } from '@angular/common';
 import { BombComponent } from './page/bomb/bomb.component';
 import { ListgamesComponent } from './page/listgames/listgames.component';
 import { TablaComponent } from './page/tabla/tabla.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { TablaComponent } from './page/tabla/tabla.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     MatSnackBarModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

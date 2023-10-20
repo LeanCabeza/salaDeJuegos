@@ -32,13 +32,13 @@ import { TablaComponent } from './page/tabla/tabla.component';
 const routes: Routes = [
   {path:'',component: MainComponent},
   {
-    path: 'on',
+    path: '',
     loadChildren: () => import('./modules/logged-in/logged-in-routing.module').then(m => m.LoggedInRoutingModule),
   },
-  {
-    path: 'off',
-    loadChildren: () => import('./modules/logged-out/logged-out-routing.module').then(m => m.LoggedOutRoutingModule),
-  },
+  {path:'main',component: MainComponent},
+  {path:'login',component: LoginComponent},
+  {path:'register',component: RegisterComponent},
+  {path:'about',component: AboutMeComponent},
   {path:'**',component: NotFoundComponent}
 ];
 

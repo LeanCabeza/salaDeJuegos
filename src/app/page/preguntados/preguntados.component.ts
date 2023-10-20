@@ -21,7 +21,7 @@ export class PreguntadosComponent implements OnInit {
     {
       text: '¿Cuál es la capital de Argentina?',
       options: ['Ciudad Autónoma de Buenos Aires', 'Quilmes', 'Merlo', 'Berazategui'],
-      correctOption: 1,
+      correctOption: 0,
       data: "https://restcountries.com/v3.1/name/ARGENTINA"
     },
     {
@@ -33,8 +33,20 @@ export class PreguntadosComponent implements OnInit {
     {
       text: '¿Cuál es la capital de Brasil?',
       options: ['Sídney', 'Melbourne', 'Brasília', 'Canberra'],
-      correctOption: 3,
+      correctOption: 2,
       data: "https://restcountries.com/v3.1/name/Brazil"
+    },
+    {
+      text: '¿Cuál es la capital de Bolivia?',
+      options: ['La Paz', 'La Guerra', 'Winsconsin', 'Texas'],
+      correctOption: 0,
+      data: "https://restcountries.com/v3.1/name/Bolivia"
+    },
+    {
+      text: '¿Cuál es la capital de Chile?',
+      options: ['Santiago de Chile', 'La Guerra', 'Winsconsin', 'Texas'],
+      correctOption: 0,
+      data: "https://restcountries.com/v3.1/name/Chile"
     },
   ];
 
